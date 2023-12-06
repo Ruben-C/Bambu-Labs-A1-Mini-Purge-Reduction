@@ -90,6 +90,11 @@ M620 S[initial_no_support_extruder]A   ; switch material if AMS exist
     M106 P1 S0
     G92 E0
     G1 E50 F200
+
+    ;60% Purge Reduction Code
+    G1 E20 F200 ;Extrude 20mm at 200mm/min.  Fix Bambu Studio waste calculations??
+    ;End of Code
+    
     M400
     M1002 set_filament_type:{filament_type[initial_no_support_extruder]}
     M104 S{nozzle_temperature_range_high[initial_no_support_extruder]}

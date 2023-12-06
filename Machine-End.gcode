@@ -23,6 +23,12 @@ M106 P3 S0 ; turn off chamber cooling fan
 
 ; pull back filament to AMS
 M620 S255
+
+;60% Purge Reduction Code
+G1 E-20 F200 ;Retract 20mm at 200mm/min
+M400         ;Wait until retract is complete
+;End of Code
+
 G1 X181 F12000
 T255
 G1 X0 F18000

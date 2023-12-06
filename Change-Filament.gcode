@@ -16,6 +16,11 @@ M106 P2 S0
 M104 S[old_filament_temp]
 {endif}
 
+;60% Purge Reduction Code
+G1 E-20 F200 ;Retract extruder 20mm at 200mm/min
+M400         ;Wait until retract is complete
+;End of Code
+
 G1 X180 F18000
 ;{if toolchange_count == 2}
 ; get travel path for change filament
@@ -31,6 +36,12 @@ G1 Y90 F9000
 
 {if next_extruder < 255}
 M400
+
+;60% Purge Reduction Code
+G1 E18 F200 ;Extract 18mm at 200mm/min
+G1 E2 F20   ;Extract 2mm at 20mm/min
+M400        ;Wait until extraction is complete
+;End of Code
 
 G92 E0
 {if flush_length_1 > 1}
